@@ -81,10 +81,10 @@ pip install venmo
 
 Setup
 -----
-Set up centmo by running:
+Set up spammo by running:
 
 ```sh
-centmo configure
+spammo configure
 
 > Venmo email [None]: brian@brianmoore.com
 > Venmo password [None]:
