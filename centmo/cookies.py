@@ -8,16 +8,16 @@ import venmo
 
 def save(requests_cookiejar):
     try:
-        os.makedirs(os.path.dirname(venmo.settings.COOKIES_FILE))
+        os.makedirs(os.path.dirname(centmo.settings.COOKIES_FILE))
     except OSError:
         pass  # It's okay if directory already exists
-    with open(venmo.settings.COOKIES_FILE, 'wb') as f:
+    with open(centmo.settings.COOKIES_FILE, 'wb') as f:
         pickle.dump(requests_cookiejar, f, -1)
 
 
 def load():
     try:
-        with open(venmo.settings.COOKIES_FILE, 'rb') as f:
+        with open(centmo.settings.COOKIES_FILE, 'rb') as f:
             return pickle.load(f)
     except IOError:
         # No cookies

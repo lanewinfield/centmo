@@ -13,7 +13,7 @@ except ImportError:
 
 import venmo
 
-logger = logging.getLogger('venmo.payment')
+logger = logging.getLogger('centmo.payment')
 
 
 def pay(user, amount, note):
@@ -26,12 +26,12 @@ def charge(user, amount, note):
 
 
 def _pay_or_charge(user, amount, note):
-    access_token = venmo.auth.get_access_token()
+    access_token = centmo.auth.get_access_token()
     if not access_token:
         logger.warn('No access token. Configuring ...')
-        if not venmo.auth.configure():
+        if not centmo.auth.configure():
             return
-        access_token = venmo.auth.get_access_token()
+        access_token = centmo.auth.get_access_token()
 
     params = {
         'note': note,
@@ -41,14 +41,14 @@ def _pay_or_charge(user, amount, note):
     }
     if user.startswith('@'):
         username = user[1:]
-        user_id = venmo.user.id_from_username(username.lower())
+        user_id = centmo.user.id_from_username(username.lower())
         if not user_id:
             logger.error('Could not find user @{}'.format(username))
             return
         params['user_id'] = user_id.lower()
     else:
         params['phone'] = user
-    response = venmo.singletons.session().post(
+    response = centmo.singletons.session().post(
         _payments_url_with_params(params)
     )
     data = response.json()
@@ -85,6 +85,6 @@ def _pay_or_charge(user, amount, note):
 
 def _payments_url_with_params(params):
     return '{payments_base_url}?{params}'.format(
-        payments_base_url=venmo.settings.PAYMENTS_URL,
+        payments_base_url=centmo.settings.PAYMENTS_URL,
         params=urlencode(params),
     )

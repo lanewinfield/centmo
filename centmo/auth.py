@@ -24,7 +24,7 @@ except NameError: pass
 
 import venmo
 
-logger = logging.getLogger('venmo.auth')
+logger = logging.getLogger('centmo.auth')
 
 
 def configure():
@@ -80,7 +80,7 @@ def two_factor(redirect_url, auth_request, csrftoken2):
     logger.info('Sending SMS verification ...')
 
     # Get two factor page
-    response = venmo.singletons.session().get(redirect_url)
+    response = centmo.singletons.session().get(redirect_url)
 
     # Send SMS
     secret = extract_otp_secret(response.text)
@@ -89,8 +89,8 @@ def two_factor(redirect_url, auth_request, csrftoken2):
         'via': 'sms',
         'csrftoken2': csrftoken2,
     }
-    url = '{}?{}'.format(venmo.settings.TWO_FACTOR_URL, urlencode(data))
-    response = venmo.singletons.session().post(
+    url = '{}?{}'.format(centmo.settings.TWO_FACTOR_URL, urlencode(data))
+    response = centmo.singletons.session().post(
         url,
         headers=headers,
     )
@@ -109,8 +109,8 @@ def two_factor(redirect_url, auth_request, csrftoken2):
         'auth_request': auth_request,
         'csrftoken2': csrftoken2,
     }
-    response = venmo.singletons.session().post(
-        venmo.settings.TWO_FACTOR_AUTHORIZATION_URL,
+    response = centmo.singletons.session().post(
+        centmo.settings.TWO_FACTOR_AUTHORIZATION_URL,
         headers=headers,
         json=data,
         allow_redirects=False,
@@ -136,11 +136,11 @@ def extract_otp_secret(text):
 
 def retrieve_access_token(code):
     data = {
-        'client_id': venmo.settings.CLIENT_ID,
-        'client_secret': venmo.settings.CLIENT_SECRET,
+        'client_id': centmo.settings.CLIENT_ID,
+        'client_secret': centmo.settings.CLIENT_SECRET,
         'code': code,
     }
-    response = venmo.singletons.session().post(venmo.settings.ACCESS_TOKEN_URL,
+    response = centmo.singletons.session().post(centmo.settings.ACCESS_TOKEN_URL,
                                                data)
     response_dict = response.json()
     access_token = response_dict['access_token']
@@ -158,12 +158,12 @@ def _authorization_url():
         'access_friends',
     ]
     params = {
-        'client_id': venmo.settings.CLIENT_ID,
+        'client_id': centmo.settings.CLIENT_ID,
         'scope': ' '.join(scopes),
         'response_type': 'code',
     }
     return '{authorization_url}?{params}'.format(
-        authorization_url=venmo.settings.AUTHORIZATION_URL,
+        authorization_url=centmo.settings.AUTHORIZATION_URL,
         params=urlencode(params)
     )
 
@@ -217,7 +217,7 @@ def update_credentials():
 
 def submit_credentials(email, password):
     # Get and parse authorization webpage xml and form
-    response = venmo.singletons.session().get(_authorization_url())
+    response = centmo.singletons.session().get(_authorization_url())
     authorization_page_xml = response.text
     filtered_xml = _filter_tag(authorization_page_xml, 'script')
     filtered_xml = _filter_tag(filtered_xml, 'head')
@@ -240,9 +240,9 @@ def submit_credentials(email, password):
         'auth_request': auth_request,
         'grant': 1,
     }
-    url = '{}?{}'.format(venmo.settings.AUTHORIZATION_URL,
+    url = '{}?{}'.format(centmo.settings.AUTHORIZATION_URL,
                          urlencode(data))
-    response = venmo.singletons.session().post(url, allow_redirects=False)
+    response = centmo.singletons.session().post(url, allow_redirects=False)
     if response.status_code != 302:
         logger.error('expecting a redirect')
         return False
@@ -274,19 +274,19 @@ def get_access_token():
 
 def read_config():
     config = configparser.RawConfigParser()
-    config.read(venmo.settings.CREDENTIALS_FILE)
+    config.read(centmo.settings.CREDENTIALS_FILE)
     return config
 
 
 def write_config(config):
     try:
-        os.makedirs(os.path.dirname(venmo.settings.CREDENTIALS_FILE))
+        os.makedirs(os.path.dirname(centmo.settings.CREDENTIALS_FILE))
     except OSError:
         pass  # It's okay if directory already exists
-    with open(venmo.settings.CREDENTIALS_FILE, 'w') as configfile:
+    with open(centmo.settings.CREDENTIALS_FILE, 'w') as configfile:
         config.write(configfile)
 
 
 def reset():
     '''rm -rf ~/.venmo'''
-    shutil.rmtree(venmo.settings.DOT_VENMO)
+    shutil.rmtree(centmo.settings.DOT_VENMO)

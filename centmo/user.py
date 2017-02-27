@@ -19,8 +19,8 @@ def print_search(query):
 
 
 def search(query):
-    response = venmo.singletons.session().get(
-        venmo.settings.USERS_URL,
+    response = centmo.singletons.session().get(
+        centmo.settings.USERS_URL,
         params={
             'limit': 5,
             'query': query,
