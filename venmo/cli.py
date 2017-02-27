@@ -54,7 +54,7 @@ def parse_args():
     )
     subparsers = parser.add_subparsers()
 
-    for action in ['pay', 'charge']:
+    for action in ['pay']:
         subparser = subparsers.add_parser(action,
                                           help='{} someone'.format(action))
         subparser.add_argument(
