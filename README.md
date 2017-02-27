@@ -7,7 +7,7 @@ Pay someone the most annoying way possible, through as many payments as the Venm
 spammo pay @lanewinfield 23.19 "I hate you"
 ```
 
-```sh
+```
 > 1. Successfully paid @lanewinfield $0.38 for "I hate you"
 > 2. Successfully paid @lanewinfield $0.38 for "I hate you"
 > 3. Successfully paid @lanewinfield $0.38 for "I hate you"
