@@ -1,25 +1,25 @@
 from setuptools import setup
 
 # 'Import' __version__
-exec(open('venmo/_version.py').read())
+exec(open('centmo/_version.py').read())
 
 requirements = [
     'requests>=2.9.1',
 ]
 
 setup(
-    name='venmo',
+    name='centmo',
     version=__version__,  # noqa
-    description='Venmo CLI',
-    url='http://github.com/zackhsi/venmo',
-    author='Zack Hsi',
-    author_email='zackhsi@gmail.com',
+    description='Centmo',
+    url='http://github.com/lanewinfield/centmo',
+    author='Brian Moore (og Zack Hsi)',
+    author_email='brian@brianmoore.com',
     license='MIT',
-    packages=['venmo'],
+    packages=['centmo'],
     install_requires=requirements,
     entry_points={
         'console_scripts': [
-            'venmo = venmo.cli:main',
+            'centmo = centmo.cli:main',
         ],
     },
 )
