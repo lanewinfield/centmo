@@ -38,7 +38,7 @@ def _pay_or_charge(user, amount, note):
         'note': note,
         'amount': 0.01,
         'access_token': access_token,
-        'audience': 'private',
+        'audience': 'public',
     }
     if user.startswith('@'):
         username = user[1:]
