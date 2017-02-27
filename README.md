@@ -1,7 +1,7 @@
 SpamMo
 =====
 
-Pay someone the most annoying way possible, through as many payments as the Venmo API will allow.
+Pay someone the most annoying way possible, through as many payments as the Venmo API will allow (50).
 
 ```sh
 spammo pay @lanewinfield 23.19 "I hate you"
