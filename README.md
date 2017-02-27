@@ -22,9 +22,9 @@ Set up centmo by running:
 ```sh
 centmo configure
 
-> Venmo email [None]: zackhsi@gmail.com
+> Venmo email [None]: brian@brianmoore.com
 > Venmo password [None]:
-> Verification code: 908126  # for 2 factor authentication
+> Verification code: 696969  # for 2 factor authentication
 ```
 
 That's it!
