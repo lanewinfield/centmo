@@ -1,27 +1,26 @@
-Venmo
+Centmo
 =====
 
-Pay or charge people on the command line!
+Pay people by the penny.
 
 ```sh
-venmo pay @zackhsi 23.19 "Thanks for the beer <3"
-venmo charge 19495551234 23.19 "That beer wasn't free!"
+venmo pay @lanewinfield 23.19 "I hate you"
 ```
 
-Installation
+<!-- Installation
 ------------
 `venmo` can be installed via `pip`.
 
 ```sh
 pip install venmo
-```
+``` -->
 
 Setup
 -----
-Set up venmo by running:
+Set up centmo by running:
 
 ```sh
-venmo configure
+centmo configure
 
 > Venmo email [None]: zackhsi@gmail.com
 > Venmo password [None]:
@@ -30,16 +29,6 @@ venmo configure
 
 That's it!
 
-Contributing
+Credits
 ------------
-Pull requests welcome! To get started, first clone the repository:
-
-```sh
-git clone git@github.com:zackhsi/venmo.git
-```
-
-Then install the development package:
-
-```sh
-python setup.py develop
-```
+This was completely based on zackhsi's Venmo CLI.
