@@ -1,7 +1,9 @@
 Spammo
 =====
 
-Pay someone the most annoying way possible, through as many payments as the Venmo API will allow (60). *Warning: if you use this, you won't be able to send a payment for an hour.*
+Pay someone the most annoying way possible, through as many payments as the Venmo API will allow (60).
+
+**Warning: if you use this, you won't be able to send a payment for an hour.**
 
 ```sh
 spammo pay @lanewinfield 23.19 "I hate you"
