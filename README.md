@@ -1,4 +1,4 @@
-Spam
+SpamMo
 =====
 
 Pay someone the most annoying way possible, through as many payments as the Venmo API will allow.
