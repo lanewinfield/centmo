@@ -3,6 +3,8 @@ venv
 # Setuptools distribution folder.
 /dist/
 
+/build/
+
 # Python egg metadata, regenerated from source files by setuptools.
 /*.egg-info
 
