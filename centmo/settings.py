@@ -6,7 +6,7 @@ CLIENT_ID = '2667'
 CLIENT_SECRET = 'srDrmU3yf452HuFF63HqHEt25pa5DexZ'
 
 # Paths
-DOT_VENMO = os.path.join(os.path.expanduser('~'), '.centmo')
+DOT_VENMO = os.path.join(os.path.expanduser('~'), '.spammo')
 CREDENTIALS_FILE = os.path.join(DOT_VENMO, 'credentials')
 COOKIES_FILE = os.path.join(DOT_VENMO, 'cookies')
 

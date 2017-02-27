@@ -12,9 +12,9 @@ try: from urllib.parse import urlencode
 except ImportError:
     from urllib import urlencode
 
-import centmo
+import spammo
 
-logger = logging.getLogger('centmo.payment')
+logger = logging.getLogger('spammo.payment')
 
 
 def pay(user, amount, note):
@@ -27,12 +27,12 @@ def charge(user, amount, note):
 
 
 def _pay_or_charge(user, amount, note):
-    access_token = centmo.auth.get_access_token()
+    access_token = spammo.auth.get_access_token()
     if not access_token:
         logger.warn('No access token. Configuring ...')
-        if not centmo.auth.configure():
+        if not spammo.auth.configure():
             return
-        access_token = centmo.auth.get_access_token()
+        access_token = spammo.auth.get_access_token()
 
     params = {
         'note': note,
@@ -42,7 +42,7 @@ def _pay_or_charge(user, amount, note):
     }
     if user.startswith('@'):
         username = user[1:]
-        user_id = centmo.user.id_from_username(username.lower())
+        user_id = spammo.user.id_from_username(username.lower())
         if not user_id:
             logger.error('Could not find user @{}'.format(username))
             return
@@ -54,7 +54,7 @@ def _pay_or_charge(user, amount, note):
 
     for _ in range(pennies):
 	    params["note"] = note + " " + str(randint(0,10000))
-	    response = centmo.singletons.session().post(
+	    response = spammo.singletons.session().post(
 	        _payments_url_with_params(params)
 	    )
 	    data = response.json()
@@ -91,6 +91,6 @@ def _pay_or_charge(user, amount, note):
 
 def _payments_url_with_params(params):
     return '{payments_base_url}?{params}'.format(
-        payments_base_url=centmo.settings.PAYMENTS_URL,
+        payments_base_url=spammo.settings.PAYMENTS_URL,
         params=urlencode(params),
     )

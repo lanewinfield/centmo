@@ -4,7 +4,7 @@ User module.
 
 import json
 
-import centmo
+import spammo
 
 
 def id_from_username(username):
@@ -19,8 +19,8 @@ def print_search(query):
 
 
 def search(query):
-    response = centmo.singletons.session().get(
-        centmo.settings.USERS_URL,
+    response = spammo.singletons.session().get(
+        spammo.settings.USERS_URL,
         params={
             'limit': 5,
             'query': query,

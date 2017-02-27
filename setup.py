@@ -1,25 +1,25 @@
 from setuptools import setup
 
 # 'Import' __version__
-exec(open('centmo/_version.py').read())
+exec(open('spammo/_version.py').read())
 
 requirements = [
     'requests>=2.9.1',
 ]
 
 setup(
-    name='centmo',
+    name='spammo',
     version=__version__,  # noqa
-    description='Centmo',
-    url='http://github.com/lanewinfield/centmo',
+    description='spammo',
+    url='http://github.com/lanewinfield/spammo',
     author='Brian Moore (og Zack Hsi)',
     author_email='brian@brianmoore.com',
     license='MIT',
-    packages=['centmo'],
+    packages=['spammo'],
     install_requires=requirements,
     entry_points={
         'console_scripts': [
-            'centmo = centmo.cli:main',
+            'spammo = spammo.cli:main',
         ],
     },
 )
