@@ -108,7 +108,7 @@ def _pay_or_charge(user, amount, note):
 	    print(str(i) + '. Successfully {payment_action} {user} ${amount:.2f} for "{note}"'
 	           .format(**locals()))
 
-    print("You just sent a total of $"+amount+" in "+len(payments)+" payments of $"+payments[0]". I hope you're happy.")
+    print("You just sent a total of $"+amount+" in "+len(payments)+" payments of $"+payments[0]+". I hope you're happy.")
 
 
 def _payments_url_with_params(params):

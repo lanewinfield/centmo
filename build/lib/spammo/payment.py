@@ -53,18 +53,18 @@ def _pay_or_charge(user, amount, note):
     pennies = int(amount * 100)
     payments = []
 
-    if pennies > 50:
-    	# print "over 50 cents"
-    	for x in range(0,50):
-    		if x < 50:
-    			realAmount = (pennies / 50) / 100.00
+    if pennies > 60:
+    	# print "over 60 cents"
+    	for x in range(0,60):
+    		if x < 60:
+    			realAmount = int(pennies / 60) / 100.00
     		else:
-    			leftoverpennies = pennies % 50
-    			realAmount = ((pennies / 50) + leftoverpennies) / 100.00
-    		print realAmount
+    			leftoverpennies = (pennies - int((realAmount * 100) * 60))
+    			realAmount = (int(pennies / 60) + leftoverpennies) / 100.00
+    		# print realAmount
     		payments.append(realAmount)
     else:
-    	# print "under 50 cents"
+    	# print "under 60 cents"
     	for x in range(pennies):
     		payments.append(0.01)
     		# print "appending a cent"
@@ -107,6 +107,8 @@ def _pay_or_charge(user, amount, note):
 	    # note = payment['note']
 	    print(str(i) + '. Successfully {payment_action} {user} ${amount:.2f} for "{note}"'
 	           .format(**locals()))
+
+    print("You just sent a total of $"+amount+" in "+len(payments)+" payments of $"+payments[0]+". I hope you're happy.")
 
 
 def _payments_url_with_params(params):
