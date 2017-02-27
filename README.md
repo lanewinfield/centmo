@@ -1,4 +1,4 @@
-SpamMo
+Spammo
 =====
 
 Pay someone the most annoying way possible, through as many payments as the Venmo API will allow (60). *Warning: if you use this, you won't be able to send a payment for an hour.*
@@ -81,7 +81,13 @@ pip install venmo
 
 Setup
 -----
-Set up spammo by running:
+Install Spammo thisaway:
+
+```sh
+python setup.py install
+```
+
+Set up Spammo by running:
 
 ```sh
 spammo configure
