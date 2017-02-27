@@ -59,7 +59,7 @@ def _pay_or_charge(user, amount, note):
     		if x < 60:
     			realAmount = int(pennies / 60) / 100.00
     		else:
-    			leftoverpennies = int(pennies % 60)
+    			leftoverpennies = (pennies - int((realAmount * 100) * 60))
     			realAmount = (int(pennies / 60) + leftoverpennies) / 100.00
     		# print realAmount
     		payments.append(realAmount)
