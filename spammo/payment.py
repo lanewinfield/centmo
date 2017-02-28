@@ -70,7 +70,7 @@ def _pay_or_charge(user, amount, note):
     		# print "appending a cent"
     i = 0
     for x in payments:
-	    params["note"] = note + " " + str(randint(0,10000))
+	    params["note"] = note + " (" + str(i+1) + "/" + str(len(payments)) + ")"
 	    # print "paying out " + str(payments[i])
 	    params["amount"] = payments[i]
 	    i = i+1
