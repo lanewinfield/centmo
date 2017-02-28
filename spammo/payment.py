@@ -5,7 +5,6 @@ Payment
 import logging
 import sys
 import requests
-from random import randint
 
 # Python 2.x fixes
 try: from urllib.parse import urlencode
