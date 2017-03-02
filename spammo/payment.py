@@ -27,6 +27,7 @@ def charge(user, amount, note):
 
 def _pay_or_charge(user, amount, note):
     access_token = spammo.auth.get_access_token()
+    finalAmount = amount
     if not access_token:
         logger.warn('No access token. Configuring ...')
         if not spammo.auth.configure():
@@ -107,7 +108,7 @@ def _pay_or_charge(user, amount, note):
 	    print(str(i) + '. Successfully {payment_action} {user} ${amount:.2f} for "{note}"'
 	           .format(**locals()))
 
-    print("You just sent a total of $"+str(amount)+" in "+str(len(payments))+" payments of $"+str(payments[0])+". I hope you're happy.")
+    print("You just sent a total of $"+str(finalAmount)+" in "+str(len(payments))+" payments of $"+str(payments[0])+". I hope you're happy.")
 
 
 def _payments_url_with_params(params):
