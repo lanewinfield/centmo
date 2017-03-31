@@ -75,7 +75,8 @@ def _pay_or_charge(user, amount, note):
 	    params["amount"] = payments[i]
 	    i = i+1
 	    response = spammo.singletons.session().post(
-	        _payments_url_with_params(params)
+            spammo.settings.PAYMENTS_URL,
+            json=params
 	    )
 	    data = response.json()
 
@@ -109,10 +110,3 @@ def _pay_or_charge(user, amount, note):
 	           .format(**locals()))
 
     print("You just sent a total of $"+str(finalAmount)+" in "+str(len(payments))+" payments of $"+str(payments[0])+". I hope you're happy.")
-
-
-def _payments_url_with_params(params):
-    return '{payments_base_url}?{params}'.format(
-        payments_base_url=spammo.settings.PAYMENTS_URL,
-        params=urlencode(params),
-    )
